@@ -16,7 +16,8 @@
     "modelsMenu": "मॉडेल प्रकार ब्राउझ करा",
     "agents": "एजंट",
     "logs": "लॉग",
-    "analyticsMenu": "विश्लेषण पृष्ठे"
+    "analyticsMenu": "विश्लेषण पृष्ठे",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "तुमचे खाते तयार करा",
@@ -60,7 +61,7 @@
     "emailChanged": "ईमेल यशस्वीरित्या बदलला.",
     "passwordReset": "पासवर्ड रीसेट झाला. कृपया साइन इन करा.",
     "resetCodeDockerHint": "Docker मध्ये चालवत आहात? कोड कंटेनर लॉगमध्ये आहे: docker logs <container>.",
-    "desktopSessionFailed": "डॅशबोर्ड लोकल सर्व्हरमध्ये साइन इन करू शकला नाही. FreeLLMAPI बंद करून पुन्हा उघडा."
+    "desktopSessionFailed": "डॅशबोर्ड लोकल सर्व्हरमध्ये साइन इन करू शकला नाही. BARATH.API बंद करून पुन्हा उघडा."
   },
   "common": {
     "save": "जतन करा",
@@ -160,16 +161,16 @@
     "notGitInstall": "या इंस्टॉलेशनमध्ये कमिटची माहिती समाविष्ट नाही.",
     "checkFailed": "अपडेट्स तपासता आले नाहीत.",
     "autoUpdateCheck": "स्वयंचलित अद्यतन तपासणी",
-    "restartAfterUpdate": "बिल्ड पूर्ण झाल्यानंतर FreeLLMAPI पुन्हा सुरू करा.",
+    "restartAfterUpdate": "बिल्ड पूर्ण झाल्यानंतर BARATH.API पुन्हा सुरू करा.",
     "downloadUpdate": "अपडेट डाउनलोड करा",
     "downloadingUpdate": "डाउनलोड होत आहे… {percent}%",
     "restartToUpdate": "अपडेटसाठी रीस्टार्ट करा",
-    "updateReadyHint": "डाउनलोड झाले. FreeLLMAPI तुमच्या डेटाचा बॅकअप घेते, रीस्टार्ट होते आणि नवीन आवृत्ती उघडते.",
+    "updateReadyHint": "डाउनलोड झाले. BARATH.API तुमच्या डेटाचा बॅकअप घेते, रीस्टार्ट होते आणि नवीन आवृत्ती उघडते.",
     "updateInstallFailed": "अपडेट इंस्टॉल होऊ शकले नाही.",
     "updateNow": "आता अपडेट करा",
-    "updatingContainer": "नवीन इमेज ओढली जात आहे आणि रीस्टार्ट होत आहे. FreeLLMAPI परत आल्यावर हे पेज रीलोड होईल.",
+    "updatingContainer": "नवीन इमेज ओढली जात आहे आणि रीस्टार्ट होत आहे. BARATH.API परत आल्यावर हे पेज रीलोड होईल.",
     "updateNowFailed": "अपडेटरने विनंती स्वीकारली नाही. watchtower कंटेनर चालू आहे का ते तपासा.",
-    "updateNowTimeout": "५ मिनिटांनंतरही FreeLLMAPI रीस्टार्ट झाले नाही. watchtower कंटेनरचे लॉग तपासा."
+    "updateNowTimeout": "५ मिनिटांनंतरही BARATH.API रीस्टार्ट झाले नाही. watchtower कंटेनरचे लॉग तपासा."
   },
   "models": {
     "title": "मॉडेल्स",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "मासिक टोकन बजेट",
     "remaining": "बाकी",
     "used": "वापरले",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Nous Research चा स्वतःत सुधारणा करणारा एजंट, कायमस्वरूपी मेमरी आणि कौशल्यांसह, टर्मिनलमध्ये किंवा चॅट अ‍ॅप्सवर.",
       "pi": "एक किमान टर्मिनल एजंट, जो तुम्ही तुमच्या स्वतःच्या एक्सटेन्शन, कौशल्ये आणि प्रॉम्प्ट टेम्पलेट्सने घडवता.",
       "reasonix": "DeepSeek साठी बनवलेला टर्मिनल कोडिंग एजंट, प्रीफिक्स कॅशिंगभोवती रचलेला जेणेकरून दीर्घ सेशनही स्वस्त राहतील.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "FreeLLMAPI ची नवीन आवृत्ती इंस्टॉल झाली आहे.",
+    "newBuild": "BARATH.API ची नवीन आवृत्ती इंस्टॉल झाली आहे.",
     "reload": "रीलोड करा"
   },
   "freeTier": {

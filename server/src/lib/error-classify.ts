@@ -402,13 +402,16 @@ export function isProviderLevelError(err: any): boolean {
   // platform for the whole request. The structured marker is authoritative;
   // the text is not.
   if (err?.skipModelForRequest === true) return false;
+  const msg = (err?.message ?? '').toLowerCase();
+  // Model-scoped high demand / capacity spikes (e.g. Google Gemini "This model is currently experiencing high demand")
+  // are model-specific, not platform-wide outages. Do not rule out the whole platform so failover to other working models succeeds.
+  if (msg.includes('model is currently experiencing') || msg.includes('model is overloaded')) {
+    return false;
+  }
   const status = typeof err?.status === 'number' ? err.status : 0;
   if (status >= 500) return true;
-  // A DEGRADED hosted deployment (NVIDIA NIM, #522) is provider health wearing
-  // a 400 — same source of truth as everywhere else, not a second substring.
   if (isProviderDegradedError(err)) return true;
   if (status !== 0) return false;
-  const msg = (err?.message ?? '').toLowerCase();
   return isTimeoutErrorText(msg)
     || msg.includes('econnrefused') || msg.includes('econnreset')
     || msg.includes('fetch failed');   // undici transport error (DNS/TLS/proxy down)

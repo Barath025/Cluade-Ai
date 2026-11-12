@@ -16,7 +16,8 @@
     "modelsMenu": "Parcourir les types de modèles",
     "agents": "Agents",
     "logs": "Journaux",
-    "analyticsMenu": "Pages d'analytique"
+    "analyticsMenu": "Pages d'analytique",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Créez votre compte",
@@ -60,7 +61,7 @@
     "emailChanged": "Adresse e-mail modifiée avec succès.",
     "passwordReset": "Mot de passe réinitialisé avec succès. Veuillez vous connecter.",
     "resetCodeDockerHint": "Vous utilisez Docker ? Le code se trouve dans le journal du conteneur : docker logs <container>.",
-    "desktopSessionFailed": "Le tableau de bord n'a pas pu se connecter au serveur local. Quittez FreeLLMAPI et rouvrez-le."
+    "desktopSessionFailed": "Le tableau de bord n'a pas pu se connecter au serveur local. Quittez BARATH.API et rouvrez-le."
   },
   "common": {
     "save": "Enregistrer",
@@ -160,16 +161,16 @@
     "notGitInstall": "Cette installation ne contient aucune information de commit.",
     "checkFailed": "Impossible de rechercher les mises à jour.",
     "autoUpdateCheck": "Vérification automatique des mises à jour",
-    "restartAfterUpdate": "Redémarrez FreeLLMAPI une fois le build terminé.",
+    "restartAfterUpdate": "Redémarrez BARATH.API une fois le build terminé.",
     "downloadUpdate": "Télécharger la mise à jour",
     "downloadingUpdate": "Téléchargement… {percent} %",
     "restartToUpdate": "Redémarrer pour mettre à jour",
-    "updateReadyHint": "Téléchargée. FreeLLMAPI sauvegarde vos données, redémarre et ouvre la nouvelle version.",
+    "updateReadyHint": "Téléchargée. BARATH.API sauvegarde vos données, redémarre et ouvre la nouvelle version.",
     "updateInstallFailed": "La mise à jour n’a pas pu être installée.",
     "updateNow": "Mettre à jour maintenant",
-    "updatingContainer": "Téléchargement de la nouvelle image et redémarrage. Cette page se recharge quand FreeLLMAPI est de retour.",
+    "updatingContainer": "Téléchargement de la nouvelle image et redémarrage. Cette page se recharge quand BARATH.API est de retour.",
     "updateNowFailed": "Le service de mise à jour a refusé la demande. Vérifiez que le conteneur watchtower tourne.",
-    "updateNowTimeout": "FreeLLMAPI n’a pas redémarré après 5 minutes. Consultez les journaux du conteneur watchtower."
+    "updateNowTimeout": "BARATH.API n’a pas redémarré après 5 minutes. Consultez les journaux du conteneur watchtower."
   },
   "models": {
     "title": "Modèles",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Budget mensuel de tokens",
     "remaining": "restant",
     "used": "utilisés",
-    "usedScopeHint": "Uniquement les requêtes de chat, depuis le début de ce mois civil, cumulées sur tous les modèles de la chaîne active, endpoints personnalisés compris. Le trafic envoyé à un fournisseur en dehors de FreeLLMAPI n'est pas compté.",
+    "usedScopeHint": "Uniquement les requêtes de chat, depuis le début de ce mois civil, cumulées sur tous les modèles de la chaîne active, endpoints personnalisés compris. Le trafic envoyé à un fournisseur en dehors de BARATH.API n'est pas compté.",
     "legendRemainingTitle": "Restant / budget mensuel de {name} ({platform})",
     "noPublishedQuota": "+{count} sans quota publié",
     "noPublishedQuotaTitle": "Ces modèles n'ont pas de budget mensuel de jetons documenté ; il n'y a donc pas de restant à afficher.",
@@ -1193,13 +1194,14 @@
       "hermes": "L'agent auto-améliorant de Nous Research, avec mémoire persistante et compétences, dans le terminal ou sur les applis de chat.",
       "pi": "Un agent de terminal minimaliste que vous façonnez avec vos propres extensions, compétences et modèles de prompts.",
       "reasonix": "Un agent de code pour le terminal pensé pour DeepSeek, bâti autour du cache de préfixe pour que les longues sessions restent bon marché.",
-      "zcode": "L'agent de code de Z.ai pour ses modèles GLM, compatible avec tout point de terminaison OpenAI via un registre de fournisseurs."
+      "zcode": "L'agent de code de Z.ai pour ses modèles GLM, compatible avec tout point de terminaison OpenAI via un registre de fournisseurs.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "Nouvelle version disponible",
     "dismiss": "Ignorer",
-    "newBuild": "Une version plus récente de FreeLLMAPI est installée.",
+    "newBuild": "Une version plus récente de BARATH.API est installée.",
     "reload": "Recharger"
   },
   "freeTier": {

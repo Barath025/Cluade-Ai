@@ -16,7 +16,8 @@
     "modelsMenu": "Selaa mallityyppejä",
     "agents": "Agentit",
     "logs": "Lokit",
-    "analyticsMenu": "Analytiikkasivut"
+    "analyticsMenu": "Analytiikkasivut",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Luo tilisi",
@@ -60,7 +61,7 @@
     "emailChanged": "Sähköposti vaihdettu.",
     "passwordReset": "Salasana palautettu. Kirjaudu sisään.",
     "resetCodeDockerHint": "Onko käytössä Docker? Koodi on kontin lokissa: docker logs <container>.",
-    "desktopSessionFailed": "Hallintapaneeli ei voinut kirjautua paikalliselle palvelimelle. Sulje FreeLLMAPI ja avaa se uudelleen."
+    "desktopSessionFailed": "Hallintapaneeli ei voinut kirjautua paikalliselle palvelimelle. Sulje BARATH.API ja avaa se uudelleen."
   },
   "common": {
     "save": "Tallenna",
@@ -160,16 +161,16 @@
     "notGitInstall": "Tämä asennus ei sisällä commit-tietoja.",
     "checkFailed": "Päivitysten tarkistaminen epäonnistui.",
     "autoUpdateCheck": "Automaattinen päivitystarkistus",
-    "restartAfterUpdate": "Käynnistä FreeLLMAPI uudelleen koonnin valmistuttua.",
+    "restartAfterUpdate": "Käynnistä BARATH.API uudelleen koonnin valmistuttua.",
     "downloadUpdate": "Lataa päivitys",
     "downloadingUpdate": "Ladataan… {percent} %",
     "restartToUpdate": "Käynnistä uudelleen päivittääksesi",
-    "updateReadyHint": "Ladattu. FreeLLMAPI varmuuskopioi tietosi, käynnistyy uudelleen ja avaa uuden version.",
+    "updateReadyHint": "Ladattu. BARATH.API varmuuskopioi tietosi, käynnistyy uudelleen ja avaa uuden version.",
     "updateInstallFailed": "Päivitystä ei voitu asentaa.",
     "updateNow": "Päivitä nyt",
-    "updatingContainer": "Ladataan uutta imagea ja käynnistetään uudelleen. Sivu latautuu uudelleen, kun FreeLLMAPI palaa.",
+    "updatingContainer": "Ladataan uutta imagea ja käynnistetään uudelleen. Sivu latautuu uudelleen, kun BARATH.API palaa.",
     "updateNowFailed": "Päivittäjä ei hyväksynyt pyyntöä. Tarkista, että watchtower-kontti on käynnissä.",
-    "updateNowTimeout": "FreeLLMAPI ei ole käynnistynyt uudelleen 5 minuutissa. Tarkista watchtower-kontin lokit."
+    "updateNowTimeout": "BARATH.API ei ole käynnistynyt uudelleen 5 minuutissa. Tarkista watchtower-kontin lokit."
   },
   "models": {
     "title": "Mallit",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Kuukausittainen token-budjetti",
     "remaining": "jäljelle jääminen",
     "used": "käytetty",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Nous Research -yhtiön itseään kehittävä agentti, jolla on pysyvä muisti ja taitoja, terminaalissa tai chat-sovelluksissa.",
       "pi": "Minimalistinen terminaaliagentti, jota muokkaat omilla laajennuksilla, taidoilla ja kehotepohjilla.",
       "reasonix": "DeepSeekille rakennettu päätteen koodausagentti, joka nojaa etuliitevälimuistiin, jotta pitkät istunnot pysyvät edullisina.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "FreeLLMAPI:n uudempi versio on asennettu.",
+    "newBuild": "BARATH.API:n uudempi versio on asennettu.",
     "reload": "Lataa uudelleen"
   },
   "freeTier": {

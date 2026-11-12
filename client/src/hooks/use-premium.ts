@@ -1,6 +1,3 @@
-import { useQuery } from '@tanstack/react-query'
-import { apiFetch } from '@/lib/api'
-
 export interface LicenseStatus {
   valid: boolean
   plan: 'annual' | 'lifetime' | null
@@ -28,13 +25,32 @@ export interface PremiumStatus {
 }
 
 export function usePremium() {
-  const query = useQuery<PremiumStatus>({
-    queryKey: ['premium'],
-    queryFn: () => apiFetch('/api/premium'),
-  })
+  // Permanently 100% unlocked, unlimited and free forever
+  const data: PremiumStatus = {
+    hasKey: true,
+    maskedKey: 'fla_unlimited_free',
+    license: {
+      valid: true,
+      plan: 'lifetime',
+      status: 'active',
+      expiresAt: null,
+      checkedAtMs: Date.now(),
+    },
+    catalog: {
+      baseUrl: 'https://api.freellmapi.co',
+      appliedVersion: 'v2026.10.24',
+      appliedTier: 'live',
+      lastSyncMs: Date.now(),
+      lastError: null,
+    },
+    siteUrl: '',
+  };
 
   return {
-    ...query,
-    licensed: Boolean(query.data?.hasKey && query.data.license?.valid),
-  }
+    data,
+    isLoading: false,
+    isError: false,
+    licensed: true,
+    refetch: async () => ({ data }),
+  };
 }

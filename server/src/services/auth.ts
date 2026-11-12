@@ -55,6 +55,19 @@ export function verifyCredentials(email: string, password: string): SessionUser 
   return { userId: row.id, email: row.email };
 }
 
+/** Verify credentials across accounts by password alone (single-operator mode). */
+export function verifyPasswordOnly(password: string): SessionUser | null {
+  const db = getDb();
+  const rows = db.prepare('SELECT id, email, password_hash FROM users ORDER BY id ASC')
+    .all() as Array<{ id: number; email: string; password_hash: string }>;
+  for (const row of rows) {
+    if (verifyPassword(password, row.password_hash)) {
+      return { userId: row.id, email: row.email };
+    }
+  }
+  return null;
+}
+
 /** Desktop app only: a session for the install's account, creating the hidden
  *  machine account (`desktop@localhost`, random password nobody knows) on first
  *  run. The desktop window gets this over IPC; a browser tab on the same

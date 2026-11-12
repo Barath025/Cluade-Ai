@@ -16,7 +16,8 @@
     "modelsMenu": "Kiri awoṣe orisi",
     "agents": "Awọn aṣoju",
     "logs": "Àkọọlẹ",
-    "analyticsMenu": "Awọn oju-iwe atupale"
+    "analyticsMenu": "Awọn oju-iwe atupale",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Ṣẹda akọọlẹ rẹ",
@@ -60,7 +61,7 @@
     "emailChanged": "A yí ìmẹ́lì padà.",
     "passwordReset": "A tún ọ̀rọ̀ aṣínà ṣe. Jọ̀wọ́ wọlé.",
     "resetCodeDockerHint": "Ṣé o ń lo Docker? Kóòdù náà wà nínú ìwé ìṣẹ̀lẹ̀ kọ́ntéènà: docker logs <container>.",
-    "desktopSessionFailed": "Dáṣíbọ́ọ̀dù kò lè wọlé sí olùpèsè agbègbè. Pa FreeLLMAPI, kí o sì tún ṣí i."
+    "desktopSessionFailed": "Dáṣíbọ́ọ̀dù kò lè wọlé sí olùpèsè agbègbè. Pa BARATH.API, kí o sì tún ṣí i."
   },
   "common": {
     "save": "Fipamọ",
@@ -160,16 +161,16 @@
     "notGitInstall": "Fífìmọ́lẹ̀ yìí kò ní àlàyé commit.",
     "checkFailed": "A kò lè ṣàyẹ̀wò àwọn ìmúdójúìwọ̀n.",
     "autoUpdateCheck": "Àyẹ̀wò ìmúdójúìwọ̀n aládàáṣe",
-    "restartAfterUpdate": "Tun FreeLLMAPI bẹ̀rẹ̀ lẹ́yìn tí ìkọ́lé bá parí.",
+    "restartAfterUpdate": "Tun BARATH.API bẹ̀rẹ̀ lẹ́yìn tí ìkọ́lé bá parí.",
     "downloadUpdate": "Ṣe ìgbàsílẹ̀ ìmúdójúìwọ̀n",
     "downloadingUpdate": "Ń ṣe ìgbàsílẹ̀… {percent}%",
     "restartToUpdate": "Tún bẹ̀rẹ̀ láti mú dójúìwọ̀n",
-    "updateReadyHint": "Ìgbàsílẹ̀ ti parí. FreeLLMAPI yóò ṣe àfẹ̀yìntì dátà rẹ, tún bẹ̀rẹ̀, yóò sì ṣí ẹ̀yà tuntun.",
+    "updateReadyHint": "Ìgbàsílẹ̀ ti parí. BARATH.API yóò ṣe àfẹ̀yìntì dátà rẹ, tún bẹ̀rẹ̀, yóò sì ṣí ẹ̀yà tuntun.",
     "updateInstallFailed": "A kò lè fi ìmúdójúìwọ̀n náà sí i.",
     "updateNow": "Ṣe ìmúdójúìwọ̀n báyìí",
-    "updatingContainer": "Ń fa àwòrán tuntun ó sì ń tún bẹ̀rẹ̀. Ojú-ìwé yìí yóò tún gbé nígbà tí FreeLLMAPI bá padà.",
+    "updatingContainer": "Ń fa àwòrán tuntun ó sì ń tún bẹ̀rẹ̀. Ojú-ìwé yìí yóò tún gbé nígbà tí BARATH.API bá padà.",
     "updateNowFailed": "Olùmúdójúìwọ̀n kò gba ìbéèrè náà. Ṣàyẹ̀wò pé àpótí watchtower ń ṣiṣẹ́.",
-    "updateNowTimeout": "FreeLLMAPI kò tíì tún bẹ̀rẹ̀ lẹ́yìn ìṣẹ́jú 5. Ṣàyẹ̀wò àkọsílẹ̀ àpótí watchtower."
+    "updateNowTimeout": "BARATH.API kò tíì tún bẹ̀rẹ̀ lẹ́yìn ìṣẹ́jú 5. Ṣàyẹ̀wò àkọsílẹ̀ àpótí watchtower."
   },
   "models": {
     "title": "Awọn awoṣe",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Oṣooṣu àmi isuna",
     "remaining": "ti o ku",
     "used": "lo",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Aṣojú Nous Research tí ó ń mú ara rẹ̀ dára síi, pẹ̀lú ìrántí tí ó wà pẹ́ àti àwọn ọgbọ́n, nínú terminal tàbí lórí àwọn ìṣàfilọ́lẹ̀ ìfọ̀rọ̀wérọ̀.",
       "pi": "Aṣojú terminal kékeré tí o ń ṣe àtúnṣe rẹ̀ pẹ̀lú àwọn àfikún, ọgbọ́n àti àwọn àpẹẹrẹ ìtọ́sọ́nà tìrẹ.",
       "reasonix": "Aṣojú kíkọ kóòdù lórí terminal tí a kọ́ fún DeepSeek, tí a gbé ka prefix caching kí àwọn ìgbà pípẹ́ lè máa jẹ́ olówó pọ́ọ́kú.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "A ti fi ẹ̀yà FreeLLMAPI tuntun sí i.",
+    "newBuild": "A ti fi ẹ̀yà BARATH.API tuntun sí i.",
     "reload": "Tún gbé e"
   },
   "freeTier": {

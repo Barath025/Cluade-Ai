@@ -159,7 +159,7 @@ describe.each(surfaces)('Claude aliases on %s', (_name, path, body) => {
   });
 
   it('still rejects a Claude-looking id that is not listed', async () => {
-    const res = await request('POST', path, body('claude-3-opus-20240229'), authHeaders());
+    const res = await request('POST', path, body('claude-unlisted-custom-model'), authHeaders());
     expect([400, 404]).toContain(res.status);
     expect(res.body?.error?.code).toBe('model_not_found');
   });

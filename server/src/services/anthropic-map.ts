@@ -186,9 +186,38 @@ export function resolveAnthropicModel(model?: string): ResolvedAnthropicModel {
 // the gateway really will serve. The display name says where the request
 // actually goes so nobody reads the entry as hosted Claude.
 export const CLAUDE_FAMILY_ALIASES: { id: string; family: ClaudeFamily; label: string }[] = [
-  { id: 'claude-opus-4-5', family: 'opus', label: 'Opus' },
-  { id: 'claude-sonnet-4-5', family: 'sonnet', label: 'Sonnet' },
-  { id: 'claude-haiku-4-5', family: 'haiku', label: 'Haiku' },
+  // Claude Auto Router
+  { id: 'claude-auto', family: 'default', label: 'Claude Auto Router' },
+  // Claude 3.7 Sonnet
+  { id: 'claude-3-7-sonnet', family: 'sonnet', label: 'Claude 3.7 Sonnet' },
+  { id: 'claude-3.7-sonnet', family: 'sonnet', label: 'Claude 3.7 Sonnet' },
+  { id: 'claude-3-7-sonnet-20250219', family: 'sonnet', label: 'Claude 3.7 Sonnet (20250219)' },
+  { id: 'claude-3-7-sonnet-latest', family: 'sonnet', label: 'Claude 3.7 Sonnet Latest' },
+  // Claude 3.5 Sonnet
+  { id: 'claude-3-5-sonnet', family: 'sonnet', label: 'Claude 3.5 Sonnet' },
+  { id: 'claude-3.5-sonnet', family: 'sonnet', label: 'Claude 3.5 Sonnet' },
+  { id: 'claude-3-5-sonnet-20241022', family: 'sonnet', label: 'Claude 3.5 Sonnet (20241022)' },
+  { id: 'claude-3.5-sonnet-20241022', family: 'sonnet', label: 'Claude 3.5 Sonnet (20241022)' },
+  { id: 'claude-3-5-sonnet-20240620', family: 'sonnet', label: 'Claude 3.5 Sonnet (20240620)' },
+  { id: 'claude-3-5-sonnet-latest', family: 'sonnet', label: 'Claude 3.5 Sonnet Latest' },
+  // Claude 3.5 Haiku
+  { id: 'claude-3-5-haiku', family: 'haiku', label: 'Claude 3.5 Haiku' },
+  { id: 'claude-3.5-haiku', family: 'haiku', label: 'Claude 3.5 Haiku' },
+  { id: 'claude-3-5-haiku-20241022', family: 'haiku', label: 'Claude 3.5 Haiku (20241022)' },
+  { id: 'claude-3-5-haiku-latest', family: 'haiku', label: 'Claude 3.5 Haiku Latest' },
+  // Claude 3 Opus
+  { id: 'claude-3-opus', family: 'opus', label: 'Claude 3 Opus' },
+  { id: 'claude-3-opus-20240229', family: 'opus', label: 'Claude 3 Opus (20240229)' },
+  { id: 'claude-3-opus-latest', family: 'opus', label: 'Claude 3 Opus Latest' },
+  // Claude 3 Sonnet & Haiku
+  { id: 'claude-3-sonnet', family: 'sonnet', label: 'Claude 3 Sonnet' },
+  { id: 'claude-3-sonnet-20240229', family: 'sonnet', label: 'Claude 3 Sonnet (20240229)' },
+  { id: 'claude-3-haiku', family: 'haiku', label: 'Claude 3 Haiku' },
+  { id: 'claude-3-haiku-20240307', family: 'haiku', label: 'Claude 3 Haiku (20240307)' },
+  // Claude 4.5 family
+  { id: 'claude-opus-4-5', family: 'opus', label: 'Claude Opus 4.5' },
+  { id: 'claude-sonnet-4-5', family: 'sonnet', label: 'Claude Sonnet 4.5' },
+  { id: 'claude-haiku-4-5', family: 'haiku', label: 'Claude Haiku 4.5' },
 ];
 
 /** What an OpenAI-wire route should dispatch a listed Claude alias to. */
@@ -205,10 +234,13 @@ export type ClaudeAliasDispatch =
 // else, including an alias id that is also a real catalog row (the listing
 // hides the alias then, and the catalog row wins).
 export function resolveListedClaudeAlias(model?: string): ClaudeAliasDispatch | null {
-  const id = (model ?? '').trim().toLowerCase();
-  if (!CLAUDE_FAMILY_ALIASES.some(alias => alias.id === id)) return null;
-  if (getDb().prepare('SELECT 1 FROM models WHERE model_id = ? LIMIT 1').get(model!.trim())) return null;
-  const resolved = resolveAnthropicModel(id);
+  const raw = (model ?? '').trim();
+  if (!raw) return null;
+  const id = raw.toLowerCase();
+  const normalized = id.replace(/\./g, '-');
+  if (!CLAUDE_FAMILY_ALIASES.some(alias => alias.id === id || alias.id === normalized)) return null;
+  if (getDb().prepare('SELECT 1 FROM models WHERE model_id = ? AND enabled = 1 LIMIT 1').get(raw)) return null;
+  const resolved = resolveAnthropicModel(normalized);
   if (resolved.modelId) return { kind: 'model', modelId: resolved.modelId };
   if (resolved.tierDbIds?.length) return { kind: 'tier', dbIds: resolved.tierDbIds };
   return { kind: 'auto' };

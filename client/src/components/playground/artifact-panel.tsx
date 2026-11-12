@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
-import { Code2, Download, Eye, RefreshCw, X } from 'lucide-react'
+import { useEffect, useRef, useState, type PointerEvent, type KeyboardEvent } from 'react'
+import { Code2, Download, Eye, ExternalLink, FolderDown, RefreshCw, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CopyButton } from '@/components/copy-button'
 import { CodeBlock } from '@/components/code-block'
 import { useI18n } from '@/i18n'
 import { ARTIFACT_SANDBOX, artifactMimeType, artifactSrcDoc, type Artifact } from '@/lib/artifacts'
 import { ARTIFACT_KEY_STEP, clampArtifactWidth, draggedArtifactWidth } from '@/lib/artifact-panel-size'
+import { downloadZipFile } from '@/lib/zip-generator'
 
 // The artifact side panel: what a reply built, running. Preview is a
 // sandboxed iframe fed by srcdoc — scripts run, but the frame is an opaque
@@ -65,6 +66,24 @@ export function ArtifactPanel({ artifact, open, width, onWidthChange, onWidthCom
     a.download = artifact.filename
     a.click()
     setTimeout(() => URL.revokeObjectURL(url), 1000)
+  }
+
+  function downloadZip() {
+    const full = artifactSrcDoc(artifact)
+    const files = [
+      { name: 'index.html', content: full },
+      { name: 'styles.css', content: '/* Custom Styles */' },
+      { name: 'app.js', content: '// Custom JavaScript' },
+      { name: 'README.md', content: `# ${title}\n\nGenerated with BARATH.API.\n\nOpen index.html in any browser or edit in VS Code / Antigravity!` },
+    ]
+    downloadZipFile(files, `${artifact.filename.replace(/\.[^.]+$/, '')}.zip`)
+  }
+
+  function openNewTab() {
+    const full = artifactSrcDoc(artifact)
+    const blob = new Blob([full], { type: 'text/html' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank')
   }
 
   function onHandleDown(e: PointerEvent<HTMLDivElement>) {
@@ -146,13 +165,19 @@ export function ArtifactPanel({ artifact, open, width, onWidthChange, onWidthCom
               <Code2 className="size-4" />
             </button>
           </div>
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end gap-0.5">
             {tab === 'preview' && (
-              <Button variant="ghost" size="icon-sm" onClick={() => setRun(n => n + 1)} aria-label={t('playground.artifactReload')} title={t('playground.artifactReload')}>
+              <Button variant="ghost" size="icon-sm" onClick={() => setRun((n: number) => n + 1)} aria-label={t('playground.artifactReload')} title={t('playground.artifactReload')}>
                 <RefreshCw className="size-4" />
               </Button>
             )}
+            <Button variant="ghost" size="icon-sm" onClick={openNewTab} aria-label="Open in new window" title="Open live preview in separate window">
+              <ExternalLink className="size-4" />
+            </Button>
             <CopyButton text={artifact.code} label={t('common.copy')} className="size-8 border-0 bg-transparent" />
+            <Button variant="ghost" size="icon-sm" onClick={downloadZip} aria-label="Download Project ZIP" title="Download Project (.ZIP)">
+              <FolderDown className="size-4" />
+            </Button>
             <Button variant="ghost" size="icon-sm" onClick={download} aria-label={t('playground.artifactDownload')} title={t('playground.artifactDownload')}>
               <Download className="size-4" />
             </Button>
@@ -169,7 +194,7 @@ export function ArtifactPanel({ artifact, open, width, onWidthChange, onWidthCom
               title={title}
               sandbox={ARTIFACT_SANDBOX}
               srcDoc={artifactSrcDoc(artifact)}
-              className="h-full w-full border-0 bg-white"
+              className="h-full w-full border-0 bg-[#0f0f0f]"
             />
           ) : (
             <pre className="h-full overflow-auto p-4">

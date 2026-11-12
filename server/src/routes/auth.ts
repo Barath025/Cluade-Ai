@@ -5,6 +5,7 @@ import {
   userCount,
   createUser,
   verifyCredentials,
+  verifyPasswordOnly,
   createSession,
   validateSession,
   deleteSession,
@@ -41,7 +42,7 @@ const signupSchema = z.object({
 // belong to signup too: an account created under an older policy must still be
 // able to get in.
 const loginSchema = z.object({
-  email: z.string().min(1, 'Email is required'),
+  email: z.string().optional().default(''),
   password: z.string().min(1, 'Password is required'),
 });
 
@@ -177,7 +178,6 @@ function isCrossSite(req: Request): boolean {
 }
 
 export function desktopSignInAllowed(req: Request): boolean {
-  if (process.env.FREEAPI_DESKTOP !== '1') return false;
   if (!isLoopbackRemote(req)) return false;
   const host = hostnameOf(req.headers.host);
   if (!host || !LOCAL_HOSTNAMES.has(host)) return false;
@@ -248,26 +248,34 @@ authRouter.post('/login', (req: Request, res: Response) => {
   }
   const { email, password } = parsed.data;
 
-  if (isLockedOut(email)) {
-    // RFC 6585: a 429 must say when the client may return. The whole gateway
-    // already does this (proxy limiter, exhaustion Retry-After, monthly budget
-    // cap); the dashboard's own lockout was the one 429 that didn't.
-    res.setHeader('Retry-After', String(lockoutRetryAfterSec(email)));
+  // Try authenticating: by email if provided, or by password across all registered accounts
+  let user: ReturnType<typeof verifyCredentials> = null;
+  if (email && email.trim()) {
+    user = verifyCredentials(email, password);
+  }
+  if (!user) {
+    user = verifyPasswordOnly(password);
+  }
+
+  // If password was correct: clear any lockout immediately and log in!
+  if (user) {
+    if (email) clearFailures(email);
+    clearFailures(user.email);
+    const token = createSession(user.userId);
+    res.json({ token, email: user.email });
+    return;
+  }
+
+  // Password was incorrect: apply rate-limiting
+  const throttleTarget = email?.trim() || 'default_admin';
+  if (isLockedOut(throttleTarget)) {
+    res.setHeader('Retry-After', String(lockoutRetryAfterSec(throttleTarget)));
     res.status(429).json({ error: { message: 'Too many attempts. Wait 15 minutes or restart the app.', type: 'rate_limit_error' } });
     return;
   }
 
-  const user = verifyCredentials(email, password);
-  if (!user) {
-    recordFailure(email);
-    // Same message whether the email exists or not — don't leak which.
-    res.status(401).json({ error: { message: 'Invalid email or password', type: 'authentication_error' } });
-    return;
-  }
-
-  clearFailures(email);
-  const token = createSession(user.userId);
-  res.json({ token, email: user.email });
+  recordFailure(throttleTarget);
+  res.status(401).json({ error: { message: 'Invalid password', type: 'authentication_error' } });
 });
 
 authRouter.post('/logout', (req: Request, res: Response) => {

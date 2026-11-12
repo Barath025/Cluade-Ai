@@ -16,7 +16,8 @@
     "modelsMenu": "Model tiplərinə baxın",
     "agents": "Agentlər",
     "logs": "Loglar",
-    "analyticsMenu": "Analitika səhifələri"
+    "analyticsMenu": "Analitika səhifələri",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Hesabınızı yaradın",
@@ -60,7 +61,7 @@
     "emailChanged": "E-poçt uğurla dəyişdirildi.",
     "passwordReset": "Parol sıfırlandı. Zəhmət olmasa daxil olun.",
     "resetCodeDockerHint": "Docker-də işləyirsiniz? Kod konteyner jurnalındadır: docker logs <container>.",
-    "desktopSessionFailed": "İdarə paneli lokal serverə daxil ola bilmədi. FreeLLMAPI-dən çıxın və yenidən açın."
+    "desktopSessionFailed": "İdarə paneli lokal serverə daxil ola bilmədi. BARATH.API-dən çıxın və yenidən açın."
   },
   "common": {
     "save": "Xilas et",
@@ -160,16 +161,16 @@
     "notGitInstall": "Bu quraşdırmada commit məlumatı yoxdur.",
     "checkFailed": "Yeniləmələri yoxlamaq mümkün olmadı.",
     "autoUpdateCheck": "Avtomatik yeniləmə yoxlaması",
-    "restartAfterUpdate": "Quruluş tamamlandıqdan sonra FreeLLMAPI-ni yenidən başladın.",
+    "restartAfterUpdate": "Quruluş tamamlandıqdan sonra BARATH.API-ni yenidən başladın.",
     "downloadUpdate": "Yeniləməni endir",
     "downloadingUpdate": "Endirilir… {percent}%",
     "restartToUpdate": "Yeniləmək üçün yenidən başlat",
-    "updateReadyHint": "Endirildi. FreeLLMAPI məlumatlarınızın ehtiyat nüsxəsini çıxarır, yenidən başlayır və yeni versiyanı açır.",
+    "updateReadyHint": "Endirildi. BARATH.API məlumatlarınızın ehtiyat nüsxəsini çıxarır, yenidən başlayır və yeni versiyanı açır.",
     "updateInstallFailed": "Yeniləmə quraşdırıla bilmədi.",
     "updateNow": "İndi yenilə",
-    "updatingContainer": "Yeni şəkil endirilir və yenidən başladılır. FreeLLMAPI qayıdanda bu səhifə yenilənəcək.",
+    "updatingContainer": "Yeni şəkil endirilir və yenidən başladılır. BARATH.API qayıdanda bu səhifə yenilənəcək.",
     "updateNowFailed": "Yeniləyici sorğunu qəbul etmədi. watchtower konteynerinin işlədiyini yoxlayın.",
-    "updateNowTimeout": "FreeLLMAPI 5 dəqiqədən sonra da yenidən başlamayıb. watchtower konteynerinin jurnallarına baxın."
+    "updateNowTimeout": "BARATH.API 5 dəqiqədən sonra da yenidən başlamayıb. watchtower konteynerinin jurnallarına baxın."
   },
   "models": {
     "title": "Modellər",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Aylıq token büdcəsi",
     "remaining": "Qalan",
     "used": "İstifadə olunmuş",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Nous Research-in özünü təkmilləşdirən agenti; daimi yaddaş və bacarıqlarla, terminalda və ya söhbət tətbiqlərində.",
       "pi": "Öz genişləndirmələriniz, bacarıqlarınız və sorğu şablonlarınızla formalaşdırdığınız minimal terminal agenti.",
       "reasonix": "DeepSeek üçün yaradılmış terminal kodlaşdırma agenti; uzun sessiyalar ucuz qalsın deyə prefiks keşi üzərində qurulub.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "FreeLLMAPI-nin daha yeni versiyası quraşdırılıb.",
+    "newBuild": "BARATH.API-nin daha yeni versiyası quraşdırılıb.",
     "reload": "Yenidən yüklə"
   },
   "freeTier": {

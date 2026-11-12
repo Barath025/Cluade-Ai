@@ -16,7 +16,8 @@
     "modelsMenu": "Pregledajte vrste modela",
     "agents": "Agenti",
     "logs": "Logovi",
-    "analyticsMenu": "Stranice analitike"
+    "analyticsMenu": "Stranice analitike",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Kreirajte svoj račun",
@@ -60,7 +61,7 @@
     "emailChanged": "E-pošta je promijenjena.",
     "passwordReset": "Lozinka je poništena. Prijavite se.",
     "resetCodeDockerHint": "Koristite Docker? Kod se nalazi u zapisu kontejnera: docker logs <container>.",
-    "desktopSessionFailed": "Nadzorna ploča nije se uspjela prijaviti na lokalni poslužitelj. Zatvorite FreeLLMAPI i ponovno ga otvorite."
+    "desktopSessionFailed": "Nadzorna ploča nije se uspjela prijaviti na lokalni poslužitelj. Zatvorite BARATH.API i ponovno ga otvorite."
   },
   "common": {
     "save": "Spasi",
@@ -160,16 +161,16 @@
     "notGitInstall": "Ova instalacija ne sadrži informacije o commitovima.",
     "checkFailed": "Nije moguće provjeriti ažuriranja.",
     "autoUpdateCheck": "Automatska provjera ažuriranja",
-    "restartAfterUpdate": "Ponovno pokrenite FreeLLMAPI nakon dovršetka izgradnje.",
+    "restartAfterUpdate": "Ponovno pokrenite BARATH.API nakon dovršetka izgradnje.",
     "downloadUpdate": "Preuzmi ažuriranje",
     "downloadingUpdate": "Preuzimanje… {percent} %",
     "restartToUpdate": "Ponovno pokreni za ažuriranje",
-    "updateReadyHint": "Preuzeto. FreeLLMAPI sigurnosno kopira vaše podatke, ponovno se pokreće i otvara novu verziju.",
+    "updateReadyHint": "Preuzeto. BARATH.API sigurnosno kopira vaše podatke, ponovno se pokreće i otvara novu verziju.",
     "updateInstallFailed": "Ažuriranje se nije moglo instalirati.",
     "updateNow": "Ažuriraj sada",
-    "updatingContainer": "Preuzimanje nove slike i ponovno pokretanje. Stranica će se ponovno učitati kad se FreeLLMAPI vrati.",
+    "updatingContainer": "Preuzimanje nove slike i ponovno pokretanje. Stranica će se ponovno učitati kad se BARATH.API vrati.",
     "updateNowFailed": "Ažurirač nije prihvatio zahtjev. Provjerite radi li kontejner watchtower.",
-    "updateNowTimeout": "FreeLLMAPI se nije ponovno pokrenuo nakon 5 minuta. Provjerite zapise kontejnera watchtower."
+    "updateNowTimeout": "BARATH.API se nije ponovno pokrenuo nakon 5 minuta. Provjerite zapise kontejnera watchtower."
   },
   "models": {
     "title": "Modeli",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Mjesečni budžet tokena",
     "remaining": "Preostali",
     "used": "Korišteno",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Samopoboljšavajući agent tvrtke Nous Research s trajnom memorijom i vještinama, u terminalu ili u chat aplikacijama.",
       "pi": "Minimalistički terminalski agent koji oblikujete vlastitim proširenjima, vještinama i predlošcima upita.",
       "reasonix": "Terminalski agent za programiranje izrađen za DeepSeek, oko predmemoriranja prefiksa, kako bi duge sesije ostale jeftine.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "Instalirana je novija verzija FreeLLMAPI-ja.",
+    "newBuild": "Instalirana je novija verzija BARATH.API-ja.",
     "reload": "Ponovno učitaj"
   },
   "freeTier": {

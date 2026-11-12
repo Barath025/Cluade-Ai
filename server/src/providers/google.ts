@@ -700,6 +700,7 @@ export class GoogleProvider extends BaseProvider {
     let buffer = '';
     let emittedFinish = false;
     let sawToolCalls = false;
+    let emittedAnyContent = false;
 
     const seenToolCallKeys = new Set<string>();
 
@@ -770,6 +771,7 @@ export class GoogleProvider extends BaseProvider {
 
           if ((text && text.length > 0) || (reasoningContent && reasoningContent.length > 0) || toolCalls.length > 0) {
             sawToolCalls = sawToolCalls || toolCalls.length > 0;
+            emittedAnyContent = true;
             yield {
               id,
               object: 'chat.completion.chunk',
@@ -831,6 +833,20 @@ export class GoogleProvider extends BaseProvider {
     // (lib/error-classify.ts:685) matches on it, and the fallback loop already
     // fails over and bench-counts the streak (lib/fallback-loop.ts:485).
     if (!emittedFinish) {
+      if (emittedAnyContent) {
+        yield {
+          id,
+          object: 'chat.completion.chunk',
+          created: Math.floor(Date.now() / 1000),
+          model: modelId,
+          choices: [{
+            index: 0,
+            delta: {},
+            finish_reason: sawToolCalls ? 'tool_calls' : 'stop',
+          }],
+        };
+        return;
+      }
       throw new Error(`${this.name} stream ended unexpectedly (no [DONE], no finish_reason) — connection reset or truncated upstream`);
     }
   }

@@ -16,7 +16,8 @@
     "modelsMenu": "नमूना प्रकार ब्राउज गर्नुहोस्",
     "agents": "एजेन्टहरू",
     "logs": "लग",
-    "analyticsMenu": "एनालिटिक्स पृष्ठहरू"
+    "analyticsMenu": "एनालिटिक्स पृष्ठहरू",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "तपाईँको खाता सिर्जना गर्नुहोस्",
@@ -60,7 +61,7 @@
     "emailChanged": "इमेल सफलतापूर्वक परिवर्तन भयो।",
     "passwordReset": "पासवर्ड रिसेट भयो। कृपया साइन इन गर्नुहोस्।",
     "resetCodeDockerHint": "Docker मा चलाइरहनुभएको छ? कोड कन्टेनर लगमा छ: docker logs <container>।",
-    "desktopSessionFailed": "ड्यासबोर्डले लोकल सर्भरमा साइन इन गर्न सकेन। FreeLLMAPI बन्द गरेर फेरि खोल्नुहोस्।"
+    "desktopSessionFailed": "ड्यासबोर्डले लोकल सर्भरमा साइन इन गर्न सकेन। BARATH.API बन्द गरेर फेरि खोल्नुहोस्।"
   },
   "common": {
     "save": "बचत गर्नुहोस्",
@@ -160,16 +161,16 @@
     "notGitInstall": "यो स्थापनामा commit जानकारी समावेश छैन।",
     "checkFailed": "अद्यावधिकहरू जाँच गर्न सकिएन।",
     "autoUpdateCheck": "स्वचालित अद्यावधिक जाँच",
-    "restartAfterUpdate": "बिल्ड पूरा भएपछि FreeLLMAPI पुनः सुरु गर्नुहोस्।",
+    "restartAfterUpdate": "बिल्ड पूरा भएपछि BARATH.API पुनः सुरु गर्नुहोस्।",
     "downloadUpdate": "अपडेट डाउनलोड गर्नुहोस्",
     "downloadingUpdate": "डाउनलोड हुँदैछ… {percent}%",
     "restartToUpdate": "अपडेट गर्न पुनः सुरु गर्नुहोस्",
-    "updateReadyHint": "डाउनलोड भयो। FreeLLMAPI ले तपाईंको डेटाको ब्याकअप लिन्छ, पुनः सुरु हुन्छ र नयाँ संस्करण खोल्छ।",
+    "updateReadyHint": "डाउनलोड भयो। BARATH.API ले तपाईंको डेटाको ब्याकअप लिन्छ, पुनः सुरु हुन्छ र नयाँ संस्करण खोल्छ।",
     "updateInstallFailed": "अपडेट इन्स्टल हुन सकेन।",
     "updateNow": "अहिले अपडेट गर्नुहोस्",
-    "updatingContainer": "नयाँ इमेज तानिँदै र पुनः सुरु हुँदैछ। FreeLLMAPI फर्केपछि यो पेज पुनः लोड हुन्छ।",
+    "updatingContainer": "नयाँ इमेज तानिँदै र पुनः सुरु हुँदैछ। BARATH.API फर्केपछि यो पेज पुनः लोड हुन्छ।",
     "updateNowFailed": "अपडेटरले अनुरोध स्वीकार गरेन। watchtower कन्टेनर चलिरहेको छ कि छैन जाँच गर्नुहोस्।",
-    "updateNowTimeout": "५ मिनेटपछि पनि FreeLLMAPI पुनः सुरु भएको छैन। watchtower कन्टेनरका लगहरू हेर्नुहोस्।"
+    "updateNowTimeout": "५ मिनेटपछि पनि BARATH.API पुनः सुरु भएको छैन। watchtower कन्टेनरका लगहरू हेर्नुहोस्।"
   },
   "models": {
     "title": "नमूनाहरू",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "मासिक टोकन बजेट",
     "remaining": "बाँकी[सम्पादन गर्ने]",
     "used": "प्रयोग गरियो",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Nous Research को आफैं सुधारिने एजेन्ट, स्थायी मेमोरी र सीपहरूसहित, टर्मिनलमा वा च्याट एपहरूमा।",
       "pi": "एक न्यूनतम टर्मिनल एजेन्ट, जसलाई तपाईं आफ्नै एक्सटेन्सन, सीप र प्रम्प्ट टेम्प्लेटले आकार दिनुहुन्छ।",
       "reasonix": "DeepSeek का लागि बनाइएको टर्मिनल कोडिङ एजेन्ट, लामा सत्रहरू सस्तो रहून् भनेर प्रिफिक्स क्यासिङको वरिपरि निर्माण गरिएको।",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "FreeLLMAPI को नयाँ संस्करण इन्स्टल भएको छ।",
+    "newBuild": "BARATH.API को नयाँ संस्करण इन्स्टल भएको छ।",
     "reload": "पुनः लोड"
   },
   "freeTier": {

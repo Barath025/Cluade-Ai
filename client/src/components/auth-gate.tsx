@@ -78,11 +78,13 @@ function AuthForm({ mode, onAuthed }: { mode: 'setup' | 'login'; onAuthed: () =>
   // the desktop app's hidden account is `desktop@localhost` (no TLD), which
   // the login route accepts on purpose (server/src/routes/auth.ts), so a
   // browser tab must be able to submit it after a password reset (#1250).
-  const emailError = !email.trim()
-    ? t('validation.required')
-    : isSetup && !isEmail(email)
-      ? t('validation.email')
-      : null
+  const emailError = isSetup
+    ? (!email.trim()
+      ? t('validation.required')
+      : !isEmail(email)
+        ? t('validation.email')
+        : null)
+    : null
   const passwordError = !password
     ? t('validation.required')
     : isSetup && password.length < PASSWORD_MIN
@@ -101,7 +103,8 @@ function AuthForm({ mode, onAuthed }: { mode: 'setup' | 'login'; onAuthed: () =>
     setBusy(true)
     setError('')
     try {
-      const payload: Record<string, string> = { email, password }
+      const payload: Record<string, string> = { password }
+      if (isSetup && email) payload.email = email
       // Only the setup flow carries a code, and only once the server has asked
       // for it. The server ignores it for local (loopback) setup.
       if (isSetup && setupCode) payload.setupCode = setupCode.trim()
@@ -131,39 +134,42 @@ function AuthForm({ mode, onAuthed }: { mode: 'setup' | 'login'; onAuthed: () =>
     <Centered>
       <div className="mb-6 flex items-center gap-2">
         <span className="inline-block size-2 rounded-full bg-foreground" />
-        <span className="font-semibold tracking-tight text-sm">FreeLLMAPI</span>
+        <span className="font-semibold tracking-tight text-sm">BARATH.AI_agent</span>
       </div>
       <div className="rounded-3xl border bg-card p-6">
-        <h1 className="text-lg font-semibold tracking-tight">{isSetup ? t('auth.createYourAccount') : t('auth.signIn')}</h1>
+        <h1 className="text-lg font-semibold tracking-tight">{isSetup ? t('auth.createYourAccount') : 'Welcome, Barath'}</h1>
         <p className="text-sm text-muted-foreground mt-1.5 mb-6">
           {isSetup
             ? t('auth.setupDescription')
-            : t('auth.loginDescription')}
+            : 'Enter password to unlock your website'}
         </p>
         <form onSubmit={submit} className="space-y-4" noValidate>
-          <div className="space-y-1.5">
-            <Label className="text-xs" htmlFor="auth-email">{t('auth.email')}</Label>
-            <Input
-              id="auth-email"
-              type="email"
-              autoComplete="username"
-              autoFocus
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder={t('auth.emailPlaceholder')}
-              aria-invalid={showEmailError}
-              aria-describedby={showEmailError ? 'auth-email-error' : undefined}
-            />
-            {attempted && <FieldError id="auth-email-error" error={emailError} />}
-          </div>
+          {isSetup && (
+            <div className="space-y-1.5">
+              <Label className="text-xs" htmlFor="auth-email">{t('auth.email')}</Label>
+              <Input
+                id="auth-email"
+                type="email"
+                autoComplete="username"
+                autoFocus
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder={t('auth.emailPlaceholder')}
+                aria-invalid={showEmailError}
+                aria-describedby={showEmailError ? 'auth-email-error' : undefined}
+              />
+              {attempted && <FieldError id="auth-email-error" error={emailError} />}
+            </div>
+          )}
           <div className="space-y-1.5">
             <Label className="text-xs" htmlFor="auth-password">{t('auth.password')}</Label>
             <PasswordInput
               id="auth-password"
+              autoFocus={!isSetup}
               autoComplete={isSetup ? 'new-password' : 'current-password'}
               value={password}
               onChange={e => setPassword(e.target.value)}
-              placeholder={isSetup ? t('auth.passwordPlaceholderSetup') : t('auth.passwordPlaceholderLogin')}
+              placeholder="Enter password..."
               aria-invalid={showPasswordError}
               aria-describedby={showPasswordError ? 'auth-password-error' : undefined}
             />
@@ -275,7 +281,7 @@ function ForgotPasswordForm({ onBack, onAuthed }: { onBack: () => void; onAuthed
     <Centered>
       <div className="mb-6 flex items-center gap-2">
         <span className="inline-block size-2 rounded-full bg-foreground" />
-        <span className="font-semibold tracking-tight text-sm">FreeLLMAPI</span>
+        <span className="font-semibold tracking-tight text-sm">BARATH.AI_agent</span>
       </div>
       <div className="rounded-3xl border bg-card p-6">
         <h1 className="text-base font-medium">{t('auth.forgotPassword')}</h1>

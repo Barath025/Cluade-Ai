@@ -24,7 +24,6 @@ import { OPEN_UPDATES_EVENT } from '@/lib/updates'
 import { Toaster } from '@/components/toaster'
 import { UpdateReminder } from '@/components/update-reminder'
 import { NewBuildPrompt } from '@/components/new-build-prompt'
-import { usePremium } from '@/hooks/use-premium'
 import { I18nProvider, useI18n } from '@/i18n'
 import { logout } from '@/lib/api'
 import { toast } from '@/lib/toast'
@@ -44,9 +43,9 @@ import MediaDetailPage from '@/pages/MediaDetailPage'
 import EmbeddingDetailPage from '@/pages/EmbeddingDetailPage'
 import AnalyticsPage from '@/pages/AnalyticsPage'
 import LogsPage from '@/pages/LogsPage'
-import PremiumPage from '@/pages/PremiumPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import AgentsPage from '@/pages/AgentsPage'
+import StudioPage from '@/pages/StudioPage'
 
 // Every failed mutation surfaces as an error toast, so no action fails
 // silently. A page that already shows the failure inline can opt out with
@@ -75,7 +74,6 @@ const navItems = [
   { to: '/keys', labelKey: 'nav.keys' },
   { to: '/agents', labelKey: 'nav.agents' },
   { to: '/analytics', labelKey: 'nav.analytics' },
-  { to: '/premium', labelKey: 'nav.premium' },
 ]
 
 // The modality pages behind "Models"; surfaced in the nav dropdown and
@@ -142,7 +140,7 @@ function Brand() {
   return (
     <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-70">
       <span className="inline-block size-2 rounded-full bg-foreground" />
-      <span className="font-semibold tracking-tight text-sm">FreeLLMAPI</span>
+      <span className="font-semibold tracking-tight text-sm">BARATH.AI_agent</span>
     </Link>
   )
 }
@@ -251,8 +249,7 @@ function Navbar() {
     return () => window.removeEventListener(OPEN_UPDATES_EVENT, open)
   }, [])
   const [credentialsMode, setCredentialsMode] = useState<'password' | 'email' | null>(null)
-  const { data: premium, licensed, isLoading: premiumLoading, isError: premiumError } = usePremium()
-  const showUpgrade = Boolean(premium) && !licensed && !premiumLoading && !premiumError
+  const showUpgrade = false
 
   return (
     <>
@@ -419,7 +416,7 @@ function PageBoundary({ children }: { children: ReactNode }) {
 // padded column. Only the Playground so far: its three columns run edge to edge
 // and the transcript scrolls inside its own pane, so the page must be exactly
 // as tall as what is left under the navbar — not a centred card with margins.
-const FULL_BLEED_ROUTES = new Set(['/playground'])
+const FULL_BLEED_ROUTES = new Set(['/playground', '/studio'])
 
 // The shell's content container. A full-bleed route drops the max-width and the
 // padding and becomes a flex child that fills the rest of the screen; every
@@ -494,12 +491,13 @@ function App() {
                       <Route path="/models/search" element={<SearchPage />} />
                       <Route path="/models/decision" element={<DecisionPage />} />
                       <Route path="/playground" element={<PlaygroundPage />} />
+                      <Route path="/studio" element={<StudioPage />} />
                       <Route path="/keys" element={<KeysPage />} />
                       <Route path="/agents" element={<AgentsPage />} />
                       <Route path="/fallback" element={<Navigate to="/models/chat" replace />} />
                       <Route path="/analytics" element={<AnalyticsPage />} />
                       <Route path="/logs" element={<LogsPage />} />
-                      <Route path="/premium" element={<PremiumPage />} />
+                      <Route path="/premium" element={<Navigate to="/studio" replace />} />
                       <Route path="/test" element={<Navigate to="/playground" replace />} />
                       <Route path="/health" element={<Navigate to="/keys" replace />} />
                       <Route path="*" element={<NotFoundPage />} />

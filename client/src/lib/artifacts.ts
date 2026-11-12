@@ -62,12 +62,78 @@ export function extractArtifacts(markdown: string, messageIndex = 0): Artifact[]
   return out
 }
 
-/** The document the sandboxed iframe runs. HTML is passed through as the
- *  model wrote it; an SVG is centred on a neutral page so it is visible at
- *  its natural size. */
 export function artifactSrcDoc(artifact: Artifact): string {
-  if (artifact.kind === 'html') return artifact.code
-  return `<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;background:#fff}body{display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}svg{max-width:100%;max-height:100%}</style></head><body>${artifact.code}</body></html>`
+  if (artifact.kind === 'svg') {
+    return `<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;background:#0f0f0f}body{display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}svg{max-width:100%;max-height:100%}</style></head><body>${artifact.code}</body></html>`
+  }
+
+  let code = artifact.code.trim();
+  const hasHtml = code.includes('<html') || code.includes('<!DOCTYPE') || code.includes('<!doctype');
+
+  const cdnHead = `
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      html, body {
+        font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0;
+        background-color: #0b0f19;
+        color: #f3f4f6;
+        -webkit-font-smoothing: antialiased;
+      }
+      /* Modern baseline fixes to prevent raw unstyled 1990s look */
+      a { color: inherit; text-decoration: none; }
+      input, select, textarea, button { font-family: inherit; }
+      input[type="text"], input[type="search"], textarea {
+        background-color: #1e293b;
+        color: #f8fafc;
+        border: 1px solid #334155;
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        outline: none;
+      }
+      input[type="text"]:focus, input[type="search"]:focus, textarea:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+      }
+      button {
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      /* Custom modern scrollbars */
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: #0b0f19; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+  `;
+
+  if (!hasHtml) {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>${artifact.title || 'Live Preview'}</title>
+  ${cdnHead}
+</head>
+<body class="bg-[#0b0f19] text-[#f3f4f6] min-h-screen p-4 antialiased selection:bg-indigo-500 selection:text-white">
+  ${code}
+</body>
+</html>`;
+  }
+
+  if (code.includes('</head>')) {
+    code = code.replace('</head>', `${cdnHead}\n</head>`);
+  } else {
+    code = code.replace(/<html[^>]*>/i, `$&<head>${cdnHead}</head>`);
+  }
+
+  return code;
 }
 
 /** Sandbox flags for the preview: scripts may run (a page without JS is not

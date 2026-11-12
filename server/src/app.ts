@@ -27,6 +27,7 @@ import { backupsRouter } from './routes/backups.js';
 import { cacheRouter } from './routes/cache.js';
 import { compressionRouter } from './routes/compression.js';
 import { authRouter } from './routes/auth.js';
+import { agentsRouter } from './routes/agents.js';
 import { docsRouter } from './routes/docs.js';
 import { mcpRouter } from './routes/mcp.js';
 import { statusRouter, providersRouter } from './routes/status.js';
@@ -113,6 +114,24 @@ export function createApp(config?: Config) {
   // above everything below — its whole value is answering before any state or
   // credential is touched.
   app.use(createHostGuard(cfg.allowedHosts));
+
+  // Normalize double-v1 prefixes and root /messages for Anthropic & OpenAI SDK clients
+  // (e.g. Claude Desktop 3P gateway or SDK with baseURL=".../v1" calling "/v1/messages")
+  app.use((req, _res, next) => {
+    if (req.url.startsWith('/v1/v1/')) {
+      req.url = req.url.slice(3); // '/v1/v1/messages' -> '/v1/messages'
+    } else if (req.url === '/messages' || req.url.startsWith('/messages?') || req.url.startsWith('/messages/')) {
+      req.url = `/v1${req.url}`;
+    } else if (req.url === '/chat/completions' || req.url.startsWith('/chat/completions?')) {
+      req.url = `/v1${req.url}`;
+    } else if (
+      (req.url === '/models' || req.url.startsWith('/models?')) &&
+      (req.headers.authorization || req.headers['x-api-key'] || !req.headers.accept?.includes('text/html'))
+    ) {
+      req.url = `/v1${req.url}`;
+    }
+    next();
+  });
   const allowedCorsOrigins = new Set([
     ...DEFAULT_DASHBOARD_ORIGINS,
     ...cfg.dashboardOrigins,
@@ -282,6 +301,7 @@ export function createApp(config?: Config) {
   app.use('/api/cache', requireAuth, cacheRouter);
   app.use('/api/compression', requireAuth, compressionRouter);
   app.use('/api/update', requireAuth, updateRouter);
+  app.use('/api/agents', agentsRouter);
 
   // Health check — no auth required.
   app.get('/api/ping', (_req, res) => {

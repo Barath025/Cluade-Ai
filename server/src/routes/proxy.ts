@@ -438,6 +438,18 @@ function buildCatalogEntries(filters: { onlyAvailable?: boolean; executionStatus
         context_length: autoContextWindow,
         available: true,
         unavailable_reason: null,
+        execution_status: 'ready' as const,
+        supported_parameters: [
+          'temperature',
+          'top_p',
+          'max_tokens',
+          'max_completion_tokens',
+          'stop',
+          'stream',
+          'tools',
+          'tool_choice',
+          'parallel_tool_calls',
+        ],
       }))
     : [];
 

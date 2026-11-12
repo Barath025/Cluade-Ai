@@ -16,7 +16,8 @@
     "modelsMenu": "Explorează tipurile de modele",
     "agents": "Agenți",
     "logs": "Jurnale",
-    "analyticsMenu": "Pagini de analiză"
+    "analyticsMenu": "Pagini de analiză",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Creează-ți contul",
@@ -60,7 +61,7 @@
     "emailChanged": "E-mailul a fost schimbat.",
     "passwordReset": "Parola a fost resetată. Autentifică-te.",
     "resetCodeDockerHint": "Rulezi în Docker? Codul se află în jurnalul containerului: docker logs <container>.",
-    "desktopSessionFailed": "Panoul de control nu s-a putut autentifica la serverul local. Închide FreeLLMAPI și deschide-l din nou."
+    "desktopSessionFailed": "Panoul de control nu s-a putut autentifica la serverul local. Închide BARATH.API și deschide-l din nou."
   },
   "common": {
     "save": "Salvează",
@@ -160,16 +161,16 @@
     "notGitInstall": "Această instalare nu include informații despre commit.",
     "checkFailed": "Nu s-au putut verifica actualizările.",
     "autoUpdateCheck": "Verificare automată a actualizărilor",
-    "restartAfterUpdate": "Repornește FreeLLMAPI după finalizarea compilării.",
+    "restartAfterUpdate": "Repornește BARATH.API după finalizarea compilării.",
     "downloadUpdate": "Descarcă actualizarea",
     "downloadingUpdate": "Se descarcă… {percent}%",
     "restartToUpdate": "Repornește pentru actualizare",
-    "updateReadyHint": "Descărcat. FreeLLMAPI face o copie de rezervă a datelor, repornește și deschide noua versiune.",
+    "updateReadyHint": "Descărcat. BARATH.API face o copie de rezervă a datelor, repornește și deschide noua versiune.",
     "updateInstallFailed": "Actualizarea nu a putut fi instalată.",
     "updateNow": "Actualizează acum",
-    "updatingContainer": "Se descarcă noua imagine și se repornește. Pagina se reîncarcă când FreeLLMAPI revine.",
+    "updatingContainer": "Se descarcă noua imagine și se repornește. Pagina se reîncarcă când BARATH.API revine.",
     "updateNowFailed": "Actualizatorul nu a acceptat cererea. Verifică dacă containerul watchtower rulează.",
-    "updateNowTimeout": "FreeLLMAPI nu a repornit după 5 minute. Verifică jurnalele containerului watchtower."
+    "updateNowTimeout": "BARATH.API nu a repornit după 5 minute. Verifică jurnalele containerului watchtower."
   },
   "models": {
     "title": "Modele",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Buget lunar pentru tokenuri",
     "remaining": "rămas",
     "used": "Utilizare",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Agentul auto-perfecționabil de la Nous Research, cu memorie persistentă și abilități, în terminal sau în aplicațiile de chat.",
       "pi": "Un agent de terminal minimalist pe care îl modelezi cu propriile extensii, abilități și șabloane de prompturi.",
       "reasonix": "Un agent de programare pentru terminal, nativ DeepSeek, construit în jurul cache-ului de prefix, ca sesiunile lungi să rămână ieftine.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "Este instalată o versiune mai nouă de FreeLLMAPI.",
+    "newBuild": "Este instalată o versiune mai nouă de BARATH.API.",
     "reload": "Reîncarcă"
   },
   "freeTier": {

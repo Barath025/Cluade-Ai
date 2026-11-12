@@ -83,6 +83,27 @@ interface FallbackEntry {
   keyCount: number
 }
 
+const DEFAULT_ANTIGRAVITY_SYSTEM_PROMPT = `You are Barath AI, an elite, highly intelligent conversational assistant and world-class software engineer.
+
+BEHAVIORAL GUIDELINES:
+1. NATURAL CONVERSATION & CHAT:
+   - For greetings (e.g. "Hi", "Hello", "Hey"), general questions, advice, brainstorming, or discussions, respond conversationally, naturally, and warmly just like ChatGPT or Claude. Do not output code blocks when only a conversational reply is expected.
+
+2. APP CLONING & WEB APPLICATION DEVELOPMENT:
+   - When asked to build, clone, design, or create any web application, page, or UI (e.g. "clone youtube", "build a spotify clone", "create a todo app", "design a crypto dashboard", "landing page"):
+     * ALWAYS output a COMPLETE, self-contained, immediately runnable single-file HTML5 application inside an \`\`\`html codeblock so the interactive Artifact preview renders it live.
+     * Include Tailwind CSS CDN: <script src="https://cdn.tailwindcss.com"></script>
+     * Include FontAwesome 6 icons: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     * Include Google Fonts: <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+     * AESTHETICS: Modern glassmorphism, elegant dark/light theme styling, responsive layouts, realistic sample data, vibrant accents, smooth hover animations, and rounded cards.
+     * FULL INTERACTIVITY: Include working JavaScript in <script> tags for tab switching, search filtering, modals, playback/previews, like/bookmark toggles, and state changes.
+
+3. CODE MODIFICATIONS & REVISIONS:
+   - When the user asks to modify, enhance, or change an existing app or code, output the full updated code in an \`\`\`html codeblock so the live preview refreshes instantly.
+
+4. GENERAL PROGRAMMING & SCRIPTS:
+   - For programming questions (Python, TypeScript, SQL, Bash, etc.), write clean, production-ready, well-commented code with concise explanations.`
+
 // ChatMessage / FusionPanelEntry now live in lib/playground-conversations.ts:
 // the transcript is persisted, so its shape is shared with the storage layer
 // rather than owned by this component.
@@ -269,9 +290,13 @@ export default function PlaygroundPage() {
   }
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [selectedModel, setSelectedModel] = useState<string>(
-    () => localStorage.getItem('playground.model') ?? 'auto',
-  )
+  const [selectedModel, setSelectedModel] = useState<string>(() => {
+    const saved = localStorage.getItem('playground.model');
+    if (!saved || saved === 'fusion' || saved.includes('3.8') || saved.includes('3.7')) {
+      return 'auto';
+    }
+    return saved;
+  })
   // Files staged for the NEXT message: images already downscaled to a data URI,
   // text-like files already decoded. Cleared on send. (#325)
   const [attachments, setAttachments] = useState<Attachment[]>([])
@@ -876,10 +901,10 @@ export default function PlaygroundPage() {
       }
 
       const isFusion = selectedModel === 'fusion'
-      const sysPrompt = systemPrompt.trim()
+      const sysPrompt = systemPrompt.trim() || DEFAULT_ANTIGRAVITY_SYSTEM_PROMPT
       const body: any = {
         messages: [
-          ...(sysPrompt ? [{ role: 'system', content: sysPrompt }] : []),
+          { role: 'system', content: sysPrompt },
           ...(searchContext ? [{ role: 'system', content: searchContext }] : []),
           ...newMessages.map(m => ({ role: m.role, content: toMessageContent(m.content, m.images) })),
         ],
@@ -899,12 +924,26 @@ export default function PlaygroundPage() {
       abortRef.current = controller
 
       const start = Date.now()
-      const res = await fetch(`${base}/v1/chat/completions`, {
+      let res = await fetch(`${base}/v1/chat/completions`, {
         method: 'POST',
         headers,
         body: JSON.stringify(body),
         signal: controller.signal,
       })
+
+      // If a manually selected model failed, automatically failover to 'auto' fallback chain!
+      if (!res.ok && selectedModel !== 'auto') {
+        console.warn(`[playground] ${selectedModel} failed; auto-switching to fallback chain...`)
+        toast.info(`Switched to auto fallback chain (${selectedModel} was unavailable)`)
+        const retryBody = { ...body }
+        delete retryBody.model
+        res = await fetch(`${base}/v1/chat/completions`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(retryBody),
+          signal: controller.signal,
+        })
+      }
 
       const latency = Date.now() - start
       const routedVia = res.headers.get('X-Routed-Via')

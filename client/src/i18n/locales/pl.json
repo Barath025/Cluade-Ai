@@ -16,7 +16,8 @@
     "modelsMenu": "Przeglądaj typy modeli",
     "agents": "Agenci",
     "logs": "Logi",
-    "analyticsMenu": "Strony analityki"
+    "analyticsMenu": "Strony analityki",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Utwórz swoje konto",
@@ -60,7 +61,7 @@
     "emailChanged": "E-mail został zmieniony.",
     "passwordReset": "Hasło zresetowane. Zaloguj się ponownie.",
     "resetCodeDockerHint": "Serwer działa w kontenerze Docker? Kod znajduje się w logu kontenera: docker logs <container>.",
-    "desktopSessionFailed": "Panel nie mógł zalogować się do lokalnego serwera. Zamknij FreeLLMAPI i otwórz go ponownie."
+    "desktopSessionFailed": "Panel nie mógł zalogować się do lokalnego serwera. Zamknij BARATH.API i otwórz go ponownie."
   },
   "common": {
     "save": "Zapisz",
@@ -160,16 +161,16 @@
     "notGitInstall": "Ta instalacja nie zawiera informacji o commicie.",
     "checkFailed": "Nie udało się sprawdzić dostępności aktualizacji.",
     "autoUpdateCheck": "Automatyczne sprawdzanie aktualizacji",
-    "restartAfterUpdate": "Uruchom ponownie FreeLLMAPI po zakończeniu kompilacji.",
+    "restartAfterUpdate": "Uruchom ponownie BARATH.API po zakończeniu kompilacji.",
     "downloadUpdate": "Pobierz aktualizację",
     "downloadingUpdate": "Pobieranie… {percent}%",
     "restartToUpdate": "Uruchom ponownie, aby zaktualizować",
-    "updateReadyHint": "Pobrano. FreeLLMAPI tworzy kopię zapasową danych, uruchamia się ponownie i otwiera nową wersję.",
+    "updateReadyHint": "Pobrano. BARATH.API tworzy kopię zapasową danych, uruchamia się ponownie i otwiera nową wersję.",
     "updateInstallFailed": "Nie udało się zainstalować aktualizacji.",
     "updateNow": "Aktualizuj teraz",
-    "updatingContainer": "Pobieranie nowego obrazu i ponowne uruchamianie. Strona odświeży się, gdy FreeLLMAPI wróci.",
+    "updatingContainer": "Pobieranie nowego obrazu i ponowne uruchamianie. Strona odświeży się, gdy BARATH.API wróci.",
     "updateNowFailed": "Aktualizator nie przyjął żądania. Sprawdź, czy kontener watchtower działa.",
-    "updateNowTimeout": "FreeLLMAPI nie uruchomił się ponownie po 5 minutach. Sprawdź logi kontenera watchtower."
+    "updateNowTimeout": "BARATH.API nie uruchomił się ponownie po 5 minutach. Sprawdź logi kontenera watchtower."
   },
   "models": {
     "title": "Modele",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Miesięczny budżet tokenów",
     "remaining": "pozostałe",
     "used": "używany",
-    "usedScopeHint": "Tylko żądania czatu od początku bieżącego miesiąca kalendarzowego, zsumowane dla wszystkich modeli w aktywnym łańcuchu — łącznie z własnymi endpointami. Ruch wysyłany do dostawcy z pominięciem FreeLLMAPI nie jest liczony.",
+    "usedScopeHint": "Tylko żądania czatu od początku bieżącego miesiąca kalendarzowego, zsumowane dla wszystkich modeli w aktywnym łańcuchu — łącznie z własnymi endpointami. Ruch wysyłany do dostawcy z pominięciem BARATH.API nie jest liczony.",
     "legendRemainingTitle": "Pozostało / budżet miesięczny dla {name} ({platform})",
     "noPublishedQuota": "+{count} bez opublikowanego limitu",
     "noPublishedQuotaTitle": "Te modele nie mają udokumentowanego miesięcznego budżetu tokenów, więc nie ma czego pokazać jako pozostałe.",
@@ -1193,13 +1194,14 @@
       "hermes": "Samodoskonalący się agent Nous Research z trwałą pamięcią i umiejętnościami, w terminalu lub w aplikacjach czatowych.",
       "pi": "Minimalistyczny agent terminalowy, który kształtujesz własnymi rozszerzeniami, umiejętnościami i szablonami promptów.",
       "reasonix": "Terminalowy agent do programowania stworzony dla DeepSeek, oparty na cache'owaniu prefiksów, by długie sesje pozostawały tanie.",
-      "zcode": "Agent kodujący Z.ai dla jego modeli GLM, łączący się z dowolnym końcowym punktem zgodnym z OpenAI przez rejestr dostawców."
+      "zcode": "Agent kodujący Z.ai dla jego modeli GLM, łączący się z dowolnym końcowym punktem zgodnym z OpenAI przez rejestr dostawców.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "Zainstalowano nowszą wersję FreeLLMAPI.",
+    "newBuild": "Zainstalowano nowszą wersję BARATH.API.",
     "reload": "Odśwież"
   },
   "freeTier": {

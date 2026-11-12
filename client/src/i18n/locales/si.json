@@ -16,7 +16,8 @@
     "modelsMenu": "ආකෘති වර්ග පිරික්සන්න",
     "agents": "නියෝජිතයන්",
     "logs": "ලොග",
-    "analyticsMenu": "විශ්ලේෂණ පිටු"
+    "analyticsMenu": "විශ්ලේෂණ පිටු",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "ඔබගේ ගිණුම සාදන්න",
@@ -60,7 +61,7 @@
     "emailChanged": "ඊමේල් සාර්ථකව වෙනස් විය.",
     "passwordReset": "මුරපදය යළි සකසන ලදි. පිවිසෙන්න.",
     "resetCodeDockerHint": "Docker තුළ ධාවනය වේද? කේතය කන්ටේනර් ලොගයේ ඇත: docker logs <container>.",
-    "desktopSessionFailed": "උපකරණ පුවරුවට දේශීය සේවාදායකයට පිවිසීමට නොහැකි විය. FreeLLMAPI වසා නැවත විවෘත කරන්න."
+    "desktopSessionFailed": "උපකරණ පුවරුවට දේශීය සේවාදායකයට පිවිසීමට නොහැකි විය. BARATH.API වසා නැවත විවෘත කරන්න."
   },
   "common": {
     "save": "සුරකින්න",
@@ -160,16 +161,16 @@
     "notGitInstall": "මෙම ස්ථාපනයේ commit තොරතුරු ඇතුළත් නොවේ.",
     "checkFailed": "යාවත්කාලීන පරීක්ෂා කිරීමට නොහැකි විය.",
     "autoUpdateCheck": "ස්වයංක්‍රීය යාවත්කාලීන පරීක්ෂාව",
-    "restartAfterUpdate": "ගොඩනැගීම සම්පූර්ණ වූ පසු FreeLLMAPI නැවත ආරම්භ කරන්න.",
+    "restartAfterUpdate": "ගොඩනැගීම සම්පූර්ණ වූ පසු BARATH.API නැවත ආරම්භ කරන්න.",
     "downloadUpdate": "යාවත්කාලීනය බාගන්න",
     "downloadingUpdate": "බාගනිමින්… {percent}%",
     "restartToUpdate": "යාවත්කාලීන කිරීමට නැවත අරඹන්න",
-    "updateReadyHint": "බාගත විය. FreeLLMAPI ඔබගේ දත්ත උපස්ථ කර, නැවත ආරම්භ වී නව අනුවාදය විවෘත කරයි.",
+    "updateReadyHint": "බාගත විය. BARATH.API ඔබගේ දත්ත උපස්ථ කර, නැවත ආරම්භ වී නව අනුවාදය විවෘත කරයි.",
     "updateInstallFailed": "යාවත්කාලීනය ස්ථාපනය කළ නොහැකි විය.",
     "updateNow": "දැන් යාවත්කාලීන කරන්න",
-    "updatingContainer": "නව image එක ලබාගෙන නැවත ආරම්භ කරමින්. FreeLLMAPI නැවත පැමිණි විට මෙම පිටුව නැවත පූරණය වේ.",
+    "updatingContainer": "නව image එක ලබාගෙන නැවත ආරම්භ කරමින්. BARATH.API නැවත පැමිණි විට මෙම පිටුව නැවත පූරණය වේ.",
     "updateNowFailed": "යාවත්කාලීනකරු ඉල්ලීම පිළිගත්තේ නැත. watchtower container එක ධාවනය වන්නේදැයි පරීක්ෂා කරන්න.",
-    "updateNowTimeout": "මිනිත්තු 5කට පසුවත් FreeLLMAPI නැවත ආරම්භ වී නැත. watchtower container හි ලොග් පරීක්ෂා කරන්න."
+    "updateNowTimeout": "මිනිත්තු 5කට පසුවත් BARATH.API නැවත ආරම්භ වී නැත. watchtower container හි ලොග් පරීක්ෂා කරන්න."
   },
   "models": {
     "title": "ආකෘති",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "මාසික සංකේත අයවැය",
     "remaining": "ඉතිරි",
     "used": "භාවිතා කරන ලදී",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Nous Research හි ස්වයං-වැඩිදියුණු වන ඒජන්තය, ස්ථිර මතකය සහ කුසලතා සමඟ, ටර්මිනලයේ හෝ චැට් යෙදුම්වල.",
       "pi": "ඔබේම දිගු, කුසලතා සහ prompt සැකිලි සමඟ හැඩගස්වන අවම ටර්මිනල් ඒජන්තයක්.",
       "reasonix": "DeepSeek සඳහා සාදන ලද ටර්මිනල් කේතන නියෝජිතයෙක්; දිගු සැසි ලාභදායීව තබා ගැනීමට prefix caching මත ගොඩනගා ඇත.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "FreeLLMAPI හි නවතම අනුවාදයක් ස්ථාපනය කර ඇත.",
+    "newBuild": "BARATH.API හි නවතම අනුවාදයක් ස්ථාපනය කර ඇත.",
     "reload": "නැවත පූරණය"
   },
   "freeTier": {

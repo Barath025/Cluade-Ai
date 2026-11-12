@@ -16,7 +16,8 @@
     "modelsMenu": "Chọgharịa ụdị nlereanya",
     "agents": "Ndị ejenti",
     "logs": "Ndekọ",
-    "analyticsMenu": "Ibe nchịkọta"
+    "analyticsMenu": "Ibe nchịkọta",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Mepụta akaụntụ gị",
@@ -60,7 +61,7 @@
     "emailChanged": "Agbanwela ozi-e.",
     "passwordReset": "Atọghatala okwuntughe. Biko banye.",
     "resetCodeDockerHint": "Ị na-agba na Docker? Koodu ahụ dị na ndekọ kọntetina: docker logs <container>.",
-    "desktopSessionFailed": "Dashboard enweghị ike ịbanye na sava mpaghara. Mechie FreeLLMAPI ma mepee ya ọzọ."
+    "desktopSessionFailed": "Dashboard enweghị ike ịbanye na sava mpaghara. Mechie BARATH.API ma mepee ya ọzọ."
   },
   "common": {
     "save": "Chekwa",
@@ -160,16 +161,16 @@
     "notGitInstall": "Nwụnye a enweghị ozi commit.",
     "checkFailed": "Enweghị ike ịlele mmelite.",
     "autoUpdateCheck": "Nyocha mmelite akpaaka",
-    "restartAfterUpdate": "Malitegharịa FreeLLMAPI mgbe build ahụ gwụchara.",
+    "restartAfterUpdate": "Malitegharịa BARATH.API mgbe build ahụ gwụchara.",
     "downloadUpdate": "Budata mmelite",
     "downloadingUpdate": "Na-ebudata… {percent}%",
     "restartToUpdate": "Malitegharịa ka imelite",
-    "updateReadyHint": "Ebudatala. FreeLLMAPI na-echekwa data gị, malitegharịa ma mepee ụdị ọhụrụ.",
+    "updateReadyHint": "Ebudatala. BARATH.API na-echekwa data gị, malitegharịa ma mepee ụdị ọhụrụ.",
     "updateInstallFailed": "Enweghị ike itinye mmelite ahụ.",
     "updateNow": "Melite ugbu a",
-    "updatingContainer": "Na-adọta onyonyo ọhụrụ ma na-amalitegharị. Ibe a ga-ebugharị mgbe FreeLLMAPI lọghachiri.",
+    "updatingContainer": "Na-adọta onyonyo ọhụrụ ma na-amalitegharị. Ibe a ga-ebugharị mgbe BARATH.API lọghachiri.",
     "updateNowFailed": "Onye mmelite anabataghị arịrịọ ahụ. Lelee ma akpa watchtower na-arụ ọrụ.",
-    "updateNowTimeout": "FreeLLMAPI amalitegharịbeghị mgbe nkeji 5 gachara. Lelee ndekọ akpa watchtower."
+    "updateNowTimeout": "BARATH.API amalitegharịbeghị mgbe nkeji 5 gachara. Lelee ndekọ akpa watchtower."
   },
   "models": {
     "title": "Ụdị",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Ego mmefu ego kwa ọnwa",
     "remaining": "fọdụrụnụ",
     "used": "eji",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Onye ọrụ Nous Research na-emeziwanye onwe ya, nwere ebe nchekwa na-adịgide na nkà, na terminal ma ọ bụ na ngwa mkparịta ụka.",
       "pi": "Obere onye ọrụ terminal ị na-akpụ site na ndọtị, nkà na ndebiri ajụjụ nke gị.",
       "reasonix": "Onye nnọchite ide koodu na terminal emere maka DeepSeek, wuru gburugburu prefix caching ka ogologo nnọkọ wee dị ọnụ ala.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "Etinyela ụdị FreeLLMAPI ọhụrụ.",
+    "newBuild": "Etinyela ụdị BARATH.API ọhụrụ.",
     "reload": "Bugharịa"
   },
   "freeTier": {

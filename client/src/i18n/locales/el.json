@@ -16,7 +16,8 @@
     "modelsMenu": "Αναζήτηση τύπων μοντέλων",
     "agents": "Πράκτορες",
     "logs": "Καταγραφές",
-    "analyticsMenu": "Σελίδες ανάλυσης"
+    "analyticsMenu": "Σελίδες ανάλυσης",
+    "studio": "Studio"
   },
   "auth": {
     "createYourAccount": "Δημιουργήστε τον λογαριασμό σας",
@@ -60,7 +61,7 @@
     "emailChanged": "Το e-mail άλλαξε.",
     "passwordReset": "Ο κωδικός επαναφέρθηκε. Συνδεθείτε.",
     "resetCodeDockerHint": "Εκτελείται σε Docker; Ο κωδικός βρίσκεται στο αρχείο καταγραφής του container: docker logs <container>.",
-    "desktopSessionFailed": "Ο πίνακας ελέγχου δεν μπόρεσε να συνδεθεί στον τοπικό διακομιστή. Κλείστε το FreeLLMAPI και ανοίξτε το ξανά."
+    "desktopSessionFailed": "Ο πίνακας ελέγχου δεν μπόρεσε να συνδεθεί στον τοπικό διακομιστή. Κλείστε το BARATH.API και ανοίξτε το ξανά."
   },
   "common": {
     "save": "Αποθήκευση",
@@ -160,16 +161,16 @@
     "notGitInstall": "Αυτή η εγκατάσταση δεν περιλαμβάνει πληροφορίες commit.",
     "checkFailed": "Δεν ήταν δυνατός ο έλεγχος για ενημερώσεις.",
     "autoUpdateCheck": "Αυτόματος έλεγχος ενημερώσεων",
-    "restartAfterUpdate": "Επανεκκινήστε το FreeLLMAPI μετά την ολοκλήρωση του build.",
+    "restartAfterUpdate": "Επανεκκινήστε το BARATH.API μετά την ολοκλήρωση του build.",
     "downloadUpdate": "Λήψη ενημέρωσης",
     "downloadingUpdate": "Λήψη… {percent}%",
     "restartToUpdate": "Επανεκκίνηση για ενημέρωση",
-    "updateReadyHint": "Η λήψη ολοκληρώθηκε. Το FreeLLMAPI δημιουργεί αντίγραφο ασφαλείας των δεδομένων σας, επανεκκινείται και ανοίγει τη νέα έκδοση.",
+    "updateReadyHint": "Η λήψη ολοκληρώθηκε. Το BARATH.API δημιουργεί αντίγραφο ασφαλείας των δεδομένων σας, επανεκκινείται και ανοίγει τη νέα έκδοση.",
     "updateInstallFailed": "Η ενημέρωση δεν ήταν δυνατό να εγκατασταθεί.",
     "updateNow": "Ενημέρωση τώρα",
-    "updatingContainer": "Λήψη της νέας εικόνας και επανεκκίνηση. Η σελίδα θα φορτωθεί ξανά όταν επιστρέψει το FreeLLMAPI.",
+    "updatingContainer": "Λήψη της νέας εικόνας και επανεκκίνηση. Η σελίδα θα φορτωθεί ξανά όταν επιστρέψει το BARATH.API.",
     "updateNowFailed": "Το πρόγραμμα ενημέρωσης δεν δέχτηκε το αίτημα. Ελέγξτε ότι εκτελείται το κοντέινερ watchtower.",
-    "updateNowTimeout": "Το FreeLLMAPI δεν έχει επανεκκινηθεί μετά από 5 λεπτά. Ελέγξτε τα αρχεία καταγραφής του κοντέινερ watchtower."
+    "updateNowTimeout": "Το BARATH.API δεν έχει επανεκκινηθεί μετά από 5 λεπτά. Ελέγξτε τα αρχεία καταγραφής του κοντέινερ watchtower."
   },
   "models": {
     "title": "Μοντέλα",
@@ -192,7 +193,7 @@
     "monthlyTokenBudget": "Μηνιαίος προϋπολογισμός token",
     "remaining": "υπόλοιπο",
     "used": "μεταχειρισμένο",
-    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside FreeLLMAPI is not counted.",
+    "usedScopeHint": "Chat requests only, since the start of this calendar month, summed over every model in the active chain — custom endpoints included. Traffic you send to a provider outside BARATH.API is not counted.",
     "legendRemainingTitle": "Remaining / monthly budget for {name} ({platform})",
     "noPublishedQuota": "+{count} with no published quota",
     "noPublishedQuotaTitle": "These models have no documented monthly token budget, so there is no remaining figure to show.",
@@ -1193,13 +1194,14 @@
       "hermes": "Ο αυτοβελτιούμενος πράκτορας της Nous Research με μόνιμη μνήμη και δεξιότητες, στο τερματικό ή σε εφαρμογές συνομιλίας.",
       "pi": "Ένας μινιμαλιστικός πράκτορας τερματικού που διαμορφώνετε με δικές σας επεκτάσεις, δεξιότητες και πρότυπα προτροπών.",
       "reasonix": "Πράκτορας προγραμματισμού για το τερματικό, φτιαγμένος για το DeepSeek γύρω από την προσωρινή αποθήκευση προθεμάτων, ώστε οι μεγάλες συνεδρίες να μένουν φθηνές.",
-      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry."
+      "zcode": "Z.ai's coding agent for its GLM models, speaking any OpenAI-compatible endpoint through a provider registry.",
+      "playwright": "Automated browser testing and screen capture via Playwright & Selenium MCP."
     }
   },
   "update": {
     "available": "New version available",
     "dismiss": "Dismiss",
-    "newBuild": "Έχει εγκατασταθεί νεότερη έκδοση του FreeLLMAPI.",
+    "newBuild": "Έχει εγκατασταθεί νεότερη έκδοση του BARATH.API.",
     "reload": "Επαναφόρτωση"
   },
   "freeTier": {
